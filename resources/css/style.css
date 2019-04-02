@@ -1,0 +1,15 @@
+/*! FLOAT PANEL */
+.fixed-action-btn.float-left{
+    right: 0px;
+    left: 15px;
+    max-width: 450px;
+    max-height: 470px;
+}
+
+.fixed-action-btn .card-panel{
+    max-height: 450px;
+}
+
+.scroll{
+    overflow: auto;
+}
