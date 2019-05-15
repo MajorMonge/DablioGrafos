@@ -1,17 +1,28 @@
-var Grafo = function (vertices, arestas, vAdj, conexo, temPeso) {
-    this.vertices = [];
-    this.arestas = [];
+function Grafo(tipo) {
+
+    /*ESTRUTURAS
+    MATRIZ: 
+    [
+        COLUUNA 1      COLUNA 2      COLUNA 3
+        [{ADJ: , COR:}, {ADJ: , COR:}, {ADJ: , COR:}, ...], LINHA 1
+        [{ADJ: , COR:}, {ADJ: , COR:}, {ADJ: , COR:}, ...], LINHA 2
+        [{ADJ: , COR:}, {ADJ: , COR:}, {ADJ: , COR:}, ...], LINHA 3
+        [{ADJ: , COR:}, {ADJ: , COR:}, {ADJ: , COR:}, ...]  LINHA 4
+
+        ADJ(0 OU 1)
+        CADA BLOCO DA MATRIZ É UMA ADJACENCIA
+    ]
     
-    this.vertices.push(vertices);
-    this.arestas.push(arestas);
-    this.vAdj = vAdj;
-    this.conexo = conexo;
-    this.temPeso = temPeso;
+    LISTA
+    [
+        [{ID:, COR: PROXIMO: (ID:, COR:, PRÓXIMO:)}, {ID:, COR: PROXIMO:}, {ID:, COR: PROXIMO:}, ...]
+    ]
+    */
 
-    return {
-        vertices, arestas, vAdj, conexo, temPeso
-    }
-
+    this.vertices = 0; //Quantidade
+    this.tipo = tipo;
+    this.matriz = [
+        []
+    ];
+    this.lista = [{}];
 };
-
-module.exports = Grafo;

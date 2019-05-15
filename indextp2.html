@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DáblioGráfos - Visualização de Gráfos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/materialize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">DáblioGráfos</a>
+            <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Início</a></li>
+                <li><a href="badges.html">Sobre</a></li>
+            </ul> -->
+        </div>
+    </nav>
+
+    <canvas id="viewport" width="1920" height="1080"></canvas>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red">
+            <i class="large material-icons">play_circle_outline</i>
+        </a>
+    </div>
+    <div class="fixed-action-btn float-left">
+        <div class="col s12 m5">
+            <div class="card-panel scroll">
+                <div>
+                    <h5>Grafos</h5>
+                    <hr>
+                    <a id="newnode" class="waves-effect waves-light btn">Novo vertice</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="resources/js/jquery-3.3.1.js"></script>
+    <script src="resources/js/materialize.js"></script>
+    <script src="resources/js/arbor.js"></script>
+    <script src="resources/js/arbor-tween.js"></script>
+    <script src="resources/js/indexhelper.js"></script>
+</body>
+
+</html>

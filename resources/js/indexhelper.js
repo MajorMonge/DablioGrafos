@@ -42,28 +42,47 @@
                 ctx.fillRect(0, 0, canvas.width, canvas.height)
 
                 particleSystem.eachEdge(function (edge, pt1, pt2) {
-                    // edge: {source:Node, target:Node, length:#, data:{}}
-                    // pt1:  {x:#, y:#}  source position in screen coords
-                    // pt2:  {x:#, y:#}  target position in screen coords
 
-                    // draw a line from pt1 to pt2
-                    ctx.strokeStyle = "rgba(0,0,0, .333)"
-                    ctx.lineWidth = 1
-                    ctx.beginPath()
-                    ctx.moveTo(pt1.x, pt1.y)
-                    ctx.lineTo(pt2.x, pt2.y)
-                    ctx.stroke()
-                })
+                    ctx.strokeStyle = "rgba(35,35,35, 0.88)";
+                    ctx.lineWidth = 4;
+                    if (pt1 == pt2) {
+                        ctx.beginPath();
+                        ctx.arc(pt1.x, pt1.y, 75, 0, 1.5 * Math.PI);
+                        ctx.stroke();
+
+                    } else {
+                        ctx.beginPath();
+                        ctx.moveTo(pt1.x, pt1.y);
+                        ctx.lineTo(pt2.x, pt2.y);
+                        ctx.stroke();
+
+                        ctx.fillStyle = "blue";
+                        ctx.font = 'bold 20px sans-serif';
+                        ctx.fillText(edge.data.name, (pt1.x + pt2.x) / 2, (pt1.y + pt2.y) / 2);
+                    }
+
+
+                });
 
                 particleSystem.eachNode(function (node, pt) {
                     // node: {mass:#, p:{x,y}, name:"", data:{}}
                     // pt:   {x:#, y:#}  node position in screen coords
 
                     // draw a rectangle centered at pt
-                    var w = 30
-                    ctx.fillStyle = (node.data.alone) ? "orange" : "black"
-                    ctx.fillRect(pt.x - w / 2, pt.y - w / 2, w, w)
+                    ctx.beginPath();
+                    ctx.arc(pt.x, pt.y, 25, 0, 2 * Math.PI);
+                    ctx.strokeStyle = "black"
+                    ctx.fillStyle = (node.data.color) || "grey";
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.font = 'italic 20px sans-serif';
+                    ctx.fillStyle = "white";
+                    ctx.fillText(node.data.name, pt.x, pt.y);
+
                 })
+
             },
 
             initMouseHandling: function () {
@@ -129,12 +148,12 @@
         }) // use center-gravity to make the graph settle nicely (ymmv)
         sys.renderer = Renderer("#viewport") // our newly created renderer will have its .init() method called shortly by sys...
 
+        sys.addNode('a', { name: 'a', color: 'black' })
         // add some nodes to the graph and watch it go...
-        sys.addEdge('a', 'b')
-        sys.addEdge('a', 'c')
-        sys.addEdge('a', 'd')
-        sys.addEdge('a', 'e')
-
+        sys.addEdge('a', 'b', { name: "1", })
+        sys.addEdge('a', 'c', { name: "1", })
+        sys.addEdge('a', 'd', { name: "1", })
+        sys.addEdge('a', 'a', { name: "1", })
         // or, equivalently:
         //
         // sys.graft({
