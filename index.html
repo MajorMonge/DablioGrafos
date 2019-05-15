@@ -7,39 +7,117 @@
     <title>DáblioGráfos - Visualização de Gráfos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="resources/css/materialize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">DáblioGráfos</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
-            </ul>
+            <div class="container">
+                <a href="#" class="brand-logo">DáblioGráfos</a>
+                <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Início</a></li>
+                    <li><a href="badges.html">Sobre</a></li>
+                </ul> -->
+            </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="section" id="visual">
-            
+    <div class="loading hide">
+        <div class="preloader-wrapper text-center big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
         </div>
-        <div class="section" id="controls">
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large waves-effect waves-light red">
-                    <i class="large material-icons">play_circle_outline</i>
-                </a>
+
+    </div>
+
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red">
+            <i class="large material-icons">play_circle_outline</i>
+        </a>
+    </div>
+
+    <div class="fixed-action-btn float-left">
+        <div class="col s12 m5">
+            <div class="card-panel scroll">
+                <div>
+                    <h5>Grafos</h5>
+                    <hr>
+                    <a id="filebutton" class="waves-effect waves-light btn">Abrir Arquivo</a>
+                </div>
             </div>
         </div>
     </div>
 
+
+    <!-- HELPERS -->
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">fECHAR</a>
+        </div>
+    </div>
+
+    <div>
+        <input type="file" id="fileElem" multiple accept=".txt" style="display:none" onchange="handleFiles(this.files)">
+    </div>
+
     <script src="resources/js/jquery-3.3.1.js"></script>
+    <script src="resources/js/require.js"></script>
     <script src="resources/js/materialize.js"></script>
-    <script src="resources/js/arbor.js"></script>
-    <script src="resources/js/arbor-tween.js"></script>
-    <script src="resources/js/indexhelper.js"></script>
+    <script src="resources/js/algoritmos/Grafo.js"></script>
+    <script src="resources/js/indexHelp.js"></script>
 </body>
 
 </html>
