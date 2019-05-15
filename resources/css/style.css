@@ -1,32 +1,90 @@
-html,
-body {
+html, body {
     overflow: hidden;
 }
 
+/* HELPERS */
+.bold{
+    font-weight: bold;
+}
+
+td{
+    font-weight: normal
+}
+
+
+/*! NAVBAR */
+
+img {
+    max-width: 60px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.brand-logo {
+    position: relative;
+    font-weight: bold;
+}
+
+.nav-wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 /*! CANVARS */
+
+#view{
+    max-height: 55vh;
+    overflow: auto;
+}
 
 #viewport {
     width: 100vw;
     height: 100vh;
 }
 
-
 /*! FLOAT PANEL */
 
-.fixed-action-btn.float-left {
+.float-panel.float-left {
     right: 0px;
     left: 15px;
-    max-width: 450px;
+    max-width: 650px;
     max-height: 470px;
+    bottom: 15px;
+    position: fixed;
 }
 
-.fixed-action-btn .card-panel {
+.float-panel .card-panel {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #29b6f6;
     max-height: 450px;
+    padding: 0px;
+}
+
+.float-panel .tabs a {
+    padding-left: 5px;
+    padding-right: 5px
 }
 
 .scroll {
     overflow: auto;
+}
+
+.float-panel h4{
+    margin: 0;
+}
+
+.tabs .tab a{
+    color: #ffffff80;
+}
+
+.tabs .tab , .tabs .tab a.active{
+    color: #ffffff;
+    background-color: #29b6f6;
+}
+
+.tabs .tab a.active{
+    font-weight: bold;
 }
 
 

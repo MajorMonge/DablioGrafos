@@ -8,23 +8,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="resources/css/materialize.css">
     <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 </head>
 
 <body>
+
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper">
-            <div class="container">
-                <a href="#" class="brand-logo">DáblioGráfos</a>
-                <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Início</a></li>
-                    <li><a href="badges.html">Sobre</a></li>
-                </ul> -->
-            </div>
+            <img src="./assets/ping.png"><a href="#" class="brand-logo">DáblioGráfos</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a id="filebutton" class="waves-effect waves-light btn float-right">Abrir
+                        Arquivo</a></li>
+            </ul>
         </div>
     </nav>
 
-    <div class="loading hide">
+    <!-- 
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper">
+            <img src="./assets/ping.png"><a href="#" class="brand-logo">DáblioGráfos</a>
+            <div class="row">
+                <ul>
+                    <li>
+                    </li>
+                    <li class="float-right"><a id="filebutton" class="waves-effect waves-light btn float-right">Abrir
+                            Arquivo</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav> -->
+
+    <div id="viewscreen" class="">
+        <h4>Sem grafo carregado</h4>
+        <div id="view" class="row ">
+            <div id="matriz" class="col s12 m6 text-center ">
+                <h6>Matriz de Adjacencia</h6>
+                <table>
+                    <thead>
+                        <tr id="matrizHeader">
+                        </tr>
+                    </thead>
+
+                    <tbody id="matrizBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="Lista" class="col s12 m6">
+                <h6>Lista de Adjacencia</h6>
+                <table>
+                    <thead>
+                        <tr id="listaHeader">
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading">
         <div class="preloader-wrapper text-center big active">
             <div class="spinner-layer spinner-blue">
                 <div class="circle-clipper left">
@@ -74,28 +121,38 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light red">
-            <i class="large material-icons">play_circle_outline</i>
-        </a>
-    </div>
-
-    <div class="fixed-action-btn float-left">
-        <div class="col s12 m5">
-            <div class="card-panel scroll">
-                <div>
-                    <h5>Grafos</h5>
-                    <hr>
-                    <a id="filebutton" class="waves-effect waves-light btn">Abrir Arquivo</a>
+    <div class="float-panel float-left">
+        <div class="card-panel">
+            <div class="row">
+                <div class="">
+                    <ul class="tabs scroll">
+                        <li class="tab col s2 scroll"><a class="active" href="#test1">Busca em Largura</a></li>
+                        <li class="tab col s2 scroll"><a href="#test2">Busca em Profundidade</a></li>
+                        <li class="tab col s2"><a href="#test3">Prim</a></li>
+                        <li class="tab col s2"><a href="#test4">Kruskal</a></li>
+                        <li class="tab col s2"><a href="#test5">Bellman-Ford</a></li>
+                        <li class="tab col s2"><a href="#test6">Dijkstra</a></li>
+                    </ul>
                 </div>
+                <div id="test1" class="col s12">
+                    <h5>Busca em Largura</h5>
+                    <hr>
+                    <input id="inputlarg" type="number">
+                    <a id="largbutton" class="waves-effect waves-light btn float-right">Executar</a>
+                </div>
+                <div id="test2" class="col s12">Test 2</div>
+                <div id="test3" class="col s12">Test 3</div>
+                <div id="test4" class="col s12">Test 4</div>
+                <div id="test5" class="col s12">Test 4</div>
+                <div id="test6" class="col s12">Test 4</div>
             </div>
         </div>
     </div>
 
+    <!-- <h5>Grafos</h5>
+    -->
 
     <!-- HELPERS -->
     <!-- Modal Structure -->
@@ -105,7 +162,7 @@
             <p>A bunch of text</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">fECHAR</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">FECHAR</a>
         </div>
     </div>
 
@@ -117,6 +174,7 @@
     <script src="resources/js/require.js"></script>
     <script src="resources/js/materialize.js"></script>
     <script src="resources/js/algoritmos/Grafo.js"></script>
+    <script src="resources/js/algoritmos/BuscaLargura.js"></script>
     <script src="resources/js/indexHelp.js"></script>
 </body>
 
