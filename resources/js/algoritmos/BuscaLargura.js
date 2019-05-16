@@ -1,15 +1,12 @@
 var Fila = function () {
-	var Prox = "sd";
+	var Prox = null;
 	var Pont = null;
 
-
 	function Enfileira(s) {
-
 		console.log("Pont: " + this.Pont)
 		if (this.Pont == null) {
 			this.Pont = s;
-			console.log("Pont s: " + this.Pont)
-			
+			console.log("Pont s: " + this.Pont)	
 		}
 		else {
 			var aux = this;
@@ -20,7 +17,6 @@ var Fila = function () {
 			novo.Pont = s;
 			novo.Prox = null;
 			aux.Prox = novo;
-
 		}
 	}
 
@@ -39,7 +35,6 @@ var Fila = function () {
 			return aux;
 
 		}
-
 		else return null;
 	}
 
@@ -83,7 +78,12 @@ function BuscaLargura(Grafo, Raiz) {
 		});
 	}
 
+	var retorno = [];
+
 	Grafo.forEach((vertice, index) => {
-		console.log("O vertice " + index-1 + " possui " + vertice.distancia + " de distancia para a Raiz");
+		console.log("O vertice " + index + " possui " + vertice.distancia + " de distancia para a Raiz");
+		retorno.push(vertice.distancia);
 	});
+
+	return retorno;
 }

@@ -31,6 +31,10 @@ img {
 }
 
 /*! CANVARS */
+#viewscreen{
+    margin-right: 20px;
+    margin-left: 20px;
+}
 
 #view{
     max-height: 55vh;

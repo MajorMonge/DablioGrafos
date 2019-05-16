@@ -1,77 +1,79 @@
-var Grafo = require('./Grafo');
-
 var BuscaProfundidade = function (Grafo) {
+	var QQR = 0;
+	
+	Grafo.forEach(vertice => {
+		vertice.COR = 'B';
+	});
 
-	var VisitaVertice = function (Grafo, Raiz, tempo) {
-		Raiz.cor = 'C'
+	Grafo.forEach(vertice => {
+		if (vertice.COR == 'B') {
+			QQR = VisitaVertice(vertice, QQR);
+			
+		}
+	});
+
+	function VisitaVertice(Raiz, tempo) {
+		console.log("Printando Raiz")
+		console.log(Raiz)
+		Raiz.COR = 'C'
 		tempo = tempo + 1;
-		Raiz.inicio = tempo;
-
-		Raiz.adjacencias.forEach(adjacencia => {
-			Grafo.vertices.forEach(vertice => {
-				if (adjacencia.destino == vertice.id) {
-					if (vertice.cor == 'B')
-						VisitaVertice(Grafo, vertice, tempo);
-				}
-			});
+		Raiz.INICIO = tempo;
+		
+		Raiz.forEach(adjacencia => {
+			if (Grafo[adjacencia.ID].COR == 'B') {
+				tempo = VisitaVertice(Grafo[adjacencia.ID], tempo);
+			}
 		})
 
-		Raiz.cor = 'P';
+		Raiz.COR = 'P';
 		tempo = tempo + 1;
-		Raiz.fim = tempo;
+		Raiz.FIM = tempo;
+
+		return tempo;
 	}
 
-	Grafo.vertices.forEach(vertice => {
-		vertice.cor = 'B';
-	});
 
-	Grafo.vertices.forEach(vertice => {
-		if (vertice.cor == 'B') {
-			VisitaVertice(Grafo, vertice, 0);
-		}
-	});
-	
-	var ImprimeBusca = function (Grafo) {
-		//Para cada Vertice em Grafo
-		{
-			console.log("O vertice " + Grafo.vertices[u].id + "foi primeiramente alcançado na " + Grafo.vertices[u].inicio + "ª etapa e finalizado na " + Grafo.vertices[u].fim + "ª etapa.");
-		}
+
+	function ImprimeBusca() {
+		Grafo.forEach((element, index) => {
+			mModal.children("p").append(`O vertice  ${index} foi primeiramente alcançado na ${element.INICIO}ª etapa e finalizado na ${element.FIM}ª etapa. <br>`);
+		})
 	}
 
 	ImprimeBusca(Grafo);
 
 
-	var BuscaCaminhoProfundidade = function (Grafo, Raiz, destino) {
+	function BuscaCaminhoProfundidade(Raiz, destino) {
 		//Para cada Vertice em Grafo
 		{
-			Grafo.vertices[u].cor = 'B';
+			Grafo.vertices[u].COR = 'B';
 		}
 		var aux = VisitaVerticeCaminho(Grafo, Raiz, 0, destino, 0);
 		if (!aux) console.log("Não foi possível alcançar o destino");
 	}
 
-	var VisitaVerticeCaminho = function (Grafo, Raiz, tempo, destino, aux) {
-		Grafo.vertices[Raiz].cor = 'C';
+	function VisitaVerticeCaminho(Raiz, tempo, destino, aux) {
+		Grafo.vertices[Raiz].COR = 'C';
 		tempo = tempo + 1;
-		Grafo.vertices[Raiz].inicio = tempo;
-		console.log("Entrando no vértice " + Grafo.vertices[Raiz].id + " na " + tempo + "ª etapa;");
-		if (Grafo.vertices[Raiz].id.equals(destino)) {
+		Grafo.vertices[Raiz].INICIO = tempo;
+		console.log("Entrando no vértice " + Grafo.vertices[Raiz].ID + " na " + tempo + "ª etapa;");
+		if (Grafo.vertices[Raiz].ID.equals(destino)) {
 			console.log("Destino alcançado!");
 			aux = 1;
 		}
 
 		//(<Para cada Vertice Adj> && !aux)
 		{
-			if (Grafo.vertices[v].cor = 'B')
+			if (Grafo.vertices[v].COR = 'B')
 				aux = (VisitaVertice(Grafo, v, tempo, destino, aux));
 		}
-		Grafo.vertices[Raiz].cor = 'P';
+		Grafo.vertices[Raiz].COR = 'P';
 		tempo = tempo + 1;
-		Grafo.vertices[Raiz].fim = tempo;
-		console.log("Saindo do vértice " + Grafo.vertices[Raiz].id + " na " + tempo + "ª etapa;");
+		Grafo.vertices[Raiz].FIM = tempo;
+		console.log("Saindo do vértice " + Grafo.vertices[Raiz].ID + " na " + tempo + "ª etapa;");
 		return (aux);
 	}
 
-}
+	return { VisitaVertice, VisitaVerticeCaminho, BuscaCaminhoProfundidade, ImprimeBusca }
 
-module.exports = BuscaProfundidade;
+}

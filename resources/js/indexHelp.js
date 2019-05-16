@@ -7,17 +7,61 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
 });
 
-var mModal = $('.modal');
+var mModal = $('.modal-content');
 
 //QUERIES
 $("#filebutton").click(function () {
     $("#fileElem").click();
 });
 
+$(".modal-close").click(function () {
+    mModal.children("p").empty();
+});
+
+$("#material-iconsbtn").click(function (){
+    if($('.card-panel').hasClass('hide') == true){
+        $('.card-panel').removeClass('hide');
+        $('#material-icons').text("arrow_drop_down")
+    }else{
+        $('.card-panel').addClass('hide');
+        $('#material-icons').text("arrow_drop_up")
+    }
+});
+
+$("#info").click(function (){
+    mModal.children("h4").text("Informações");
+    mModal.children("p").text("Feito por: João Henrique Saquetto Teixeira, Luiz Filipe Miguel Monge e Paulo Henrique Silva Peres.")
+    $('.modal').modal("open");
+});
+
 $("#largbutton").click(function () {
     console.log(GrafoAuxiliar.lista[1])
+    var texto = BuscaLargura(GrafoAuxiliar.lista, $("#inputlarg").val())
     console.log("Buscando em largura a partir de " + $("#inputlarg").val())
-    BuscaLargura(GrafoAuxiliar.lista, $("#inputlarg").val());
+    mModal.children("h4").text("Busca em largura");
+    texto.forEach((element, index) => {
+        mModal.children("p").append(`O vértice ${index} possui ${element} de distancia para a Raiz. <br>`);
+    });
+    $('.modal').modal("open");
+});
+
+$("#deepbutton").click(function () {
+    var texto = BuscaProfundidade(GrafoAuxiliar.lista);
+    mModal.children("h4").text("Busca em Profundidade");
+    $('.modal').modal("open");
+
+});
+
+$("#dijkstrabutton").click(function () {
+    Dijkstra(GrafoAuxiliar.lista, $("#inputdijkstra").val());
+    mModal.children("h4").text("Dijkstra");
+    $('.modal').modal("open");
+});
+
+$("#primbutton").click(function () {
+    Prim(GrafoAuxiliar.lista, $("#inputprim").val());
+    mModal.children("h4").text("Prim");
+    $('.modal').modal("open");
 });
 
 
@@ -56,7 +100,7 @@ function generateTable() {
 function generateView() {
     $("#view").empty();
     $("#view").append(`<div id="matriz" class="col s12 m6 text-center ">
-    <h6>Matriz de Adjacencia</h6>
+    <h6>Matriz de Adjacência</h6>
     <table>
         <thead>
             <tr id="matrizHeader">
@@ -69,7 +113,7 @@ function generateView() {
     </table>
 </div>
 <div id="Lista" class="col s12 m6">
-    <h6>Lista de Adjacencia</h6>
+    <h6>Lista de Adjacência</h6>
     <table>
         <thead>
             <tr id="listaHeader">
